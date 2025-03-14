@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_afficher = new System.Windows.Forms.TextBox();
-            this.lbl_rep = new System.Windows.Forms.Label();
             this.btn_valider = new System.Windows.Forms.Button();
             this.lbl_nom = new System.Windows.Forms.Label();
             this.txt_nom = new System.Windows.Forms.TextBox();
@@ -39,29 +37,13 @@
             this.lbl_difficulte = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txt_afficher
-            // 
-            this.txt_afficher.Location = new System.Drawing.Point(215, 54);
-            this.txt_afficher.Name = "txt_afficher";
-            this.txt_afficher.Size = new System.Drawing.Size(334, 20);
-            this.txt_afficher.TabIndex = 0;
-            // 
-            // lbl_rep
-            // 
-            this.lbl_rep.AutoSize = true;
-            this.lbl_rep.Location = new System.Drawing.Point(129, 57);
-            this.lbl_rep.Name = "lbl_rep";
-            this.lbl_rep.Size = new System.Drawing.Size(56, 13);
-            this.lbl_rep.TabIndex = 1;
-            this.lbl_rep.Text = "Réponse :";
-            // 
             // btn_valider
             // 
-            this.btn_valider.Location = new System.Drawing.Point(322, 258);
+            this.btn_valider.Location = new System.Drawing.Point(320, 328);
             this.btn_valider.Name = "btn_valider";
             this.btn_valider.Size = new System.Drawing.Size(75, 23);
             this.btn_valider.TabIndex = 2;
-            this.btn_valider.Text = "Push Me";
+            this.btn_valider.Text = "Valider";
             this.btn_valider.UseVisualStyleBackColor = true;
             this.btn_valider.Click += new System.EventHandler(this.btn_valider_Click);
             // 
@@ -99,7 +81,7 @@
             // 
             // combo_difficulte
             // 
-            this.combo_difficulte.Location = new System.Drawing.Point(294, 197);
+            this.combo_difficulte.Location = new System.Drawing.Point(291, 262);
             this.combo_difficulte.Name = "combo_difficulte";
             this.combo_difficulte.Size = new System.Drawing.Size(121, 21);
             this.combo_difficulte.TabIndex = 8;
@@ -108,7 +90,7 @@
             // lbl_difficulte
             // 
             this.lbl_difficulte.AutoSize = true;
-            this.lbl_difficulte.Location = new System.Drawing.Point(150, 205);
+            this.lbl_difficulte.Location = new System.Drawing.Point(147, 270);
             this.lbl_difficulte.Name = "lbl_difficulte";
             this.lbl_difficulte.Size = new System.Drawing.Size(54, 13);
             this.lbl_difficulte.TabIndex = 9;
@@ -126,8 +108,6 @@
             this.Controls.Add(this.lbl_nom);
             this.Controls.Add(this.txt_nom);
             this.Controls.Add(this.btn_valider);
-            this.Controls.Add(this.lbl_rep);
-            this.Controls.Add(this.txt_afficher);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -136,9 +116,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt_afficher;
-        private System.Windows.Forms.Label lbl_rep;
         private System.Windows.Forms.Button btn_valider;
         private System.Windows.Forms.Label lbl_nom;
         private System.Windows.Forms.TextBox txt_nom;

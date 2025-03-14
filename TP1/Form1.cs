@@ -31,14 +31,19 @@ namespace TP1
             {
                 MessageBox.Show("Aucun prénom n'est rentré", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            if(combo_difficulte.SelectedIndex <= -1)
+            {
+                MessageBox.Show("Aucune difficulté n'est rentrée", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
-                txt_afficher.Text = "";
-                txt_afficher.Text += "La difficulté séléctionnée est " + combo_difficulte.SelectedItem + ".";
-                string result = "Bonjour ";
-                result += txt_prenom.Text;
-                result += " " + txt_nom.Text;
-                txt_afficher.Text += result;
+                string Prenom = txt_prenom.Text;
+                string Nom = txt_nom.Text;
+                string Difficulte = combo_difficulte.SelectedItem.ToString();
+                Jeu J = new Jeu();
+                J.Show();
+                this.Hide();
+
             }
 
         }
@@ -50,7 +55,6 @@ namespace TP1
                 lbl_difficulte.Font = new Font(lbl_difficulte.Font, FontStyle.Bold);
                 lbl_nom.Font = new Font(lbl_nom.Font, FontStyle.Bold);
                 lbl_prenom.Font = new Font(lbl_prenom.Font, FontStyle.Bold);
-                lbl_rep.Font = new Font(lbl_rep.Font, FontStyle.Bold);
             }
             else
             {
@@ -58,7 +62,6 @@ namespace TP1
                 lbl_difficulte.Font = new Font(lbl_difficulte.Font, FontStyle.Regular);
                 lbl_nom.Font = new Font(lbl_nom.Font, FontStyle.Regular);
                 lbl_prenom.Font = new Font(lbl_prenom.Font, FontStyle.Regular);
-                lbl_rep.Font = new Font(lbl_rep.Font, FontStyle.Regular);
             }
         }
     }

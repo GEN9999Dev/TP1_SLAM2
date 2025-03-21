@@ -10,20 +10,23 @@ namespace TP1
     public class Partie
     {
         public int score;
-        public int difficulte;
+        public string difficulte;
         public int nombreQuestions;
         public List<Question> listeQuestions;
         public int numeroBonneReponse;
         public int numeroQuestion;
         private List<int> reponseAleatoire;
+        public string nomJoueur, prenomJoueur;
 
-        public Partie(List<Question> listeQuestions)
+        public Partie(List<Question> listeQuestions, string nomJoueur, string prenomJoueur, string difficulte)
         {
             this.score = 0;
-            this.difficulte = 0;
+            this.difficulte = difficulte;
             this.nombreQuestions = listeQuestions.Count();
             this.listeQuestions = listeQuestions;
             this.numeroQuestion = 0;
+            this.nomJoueur = nomJoueur;
+            this.prenomJoueur = prenomJoueur;
         }
         public void calculerScore(bool bonneRep)
         {
@@ -59,6 +62,27 @@ namespace TP1
                 calculerScore(false);
             }
         }
+        public void gestionTimer(TextBox txt_timer, Jeu jeu, PictureBox PbImage)
+        {
+            Timer timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += (sender, e) => Timer_Tick(sender, e, txt_timer, jeu, PbImage);
+
+            timer.Start();
+        }
+
+        public void Timer_Tick(object sender, EventArgs e, TextBox txt_timer, Jeu jeu, PictureBox PbImage)
+        {
+            jeu.timer_partie++;
+            txt_timer.Text = jeu.timer_partie.ToString() + " sec";
+            if(jeu.timer_partie >= 15)
+            {
+                validerReponse(0, PbImage);
+                changerQuestion()
+            }
+        }
+
+
         private void aleatoireReponse(TextBox txt_affichage, GroupBox gd_reponse)
         {
             int bonneReponse = listeQuestions[numeroQuestion].reponse;

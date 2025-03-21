@@ -41,6 +41,10 @@
             this.txt_Boxtemps = new System.Windows.Forms.TextBox();
             this.lbl_temps = new System.Windows.Forms.Label();
             this.picRep = new System.Windows.Forms.PictureBox();
+            this.txt_difficulte = new System.Windows.Forms.TextBox();
+            this.txt_nom_prenom = new System.Windows.Forms.TextBox();
+            this.lbl_difficulté = new System.Windows.Forms.Label();
+            this.lbl_nom_prenom = new System.Windows.Forms.Label();
             this.groupRep.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRep)).BeginInit();
             this.SuspendLayout();
@@ -181,12 +185,54 @@
             this.picRep.TabIndex = 6;
             this.picRep.TabStop = false;
             // 
+            // txt_difficulte
+            // 
+            this.txt_difficulte.Enabled = false;
+            this.txt_difficulte.Location = new System.Drawing.Point(770, 503);
+            this.txt_difficulte.Multiline = true;
+            this.txt_difficulte.Name = "txt_difficulte";
+            this.txt_difficulte.Size = new System.Drawing.Size(249, 25);
+            this.txt_difficulte.TabIndex = 8;
+            this.txt_difficulte.Text = difficulte;
+            // 
+            // txt_nom_prenom
+            // 
+            this.txt_nom_prenom.Enabled = false;
+            this.txt_nom_prenom.Location = new System.Drawing.Point(770, 472);
+            this.txt_nom_prenom.Multiline = true;
+            this.txt_nom_prenom.Name = "txt_nom_prenom";
+            this.txt_nom_prenom.Size = new System.Drawing.Size(249, 25);
+            this.txt_nom_prenom.TabIndex = 9;
+            this.txt_nom_prenom.Text = prenomJoueur + " " + nomJoueur;
+            // 
+            // lbl_difficulté
+            // 
+            this.lbl_difficulté.AutoSize = true;
+            this.lbl_difficulté.Location = new System.Drawing.Point(671, 506);
+            this.lbl_difficulté.Name = "lbl_difficulté";
+            this.lbl_difficulté.Size = new System.Drawing.Size(54, 13);
+            this.lbl_difficulté.TabIndex = 10;
+            this.lbl_difficulté.Text = "Difficulté :";
+            // 
+            // lbl_nom_prenom
+            // 
+            this.lbl_nom_prenom.AutoSize = true;
+            this.lbl_nom_prenom.Location = new System.Drawing.Point(671, 475);
+            this.lbl_nom_prenom.Name = "lbl_nom_prenom";
+            this.lbl_nom_prenom.Size = new System.Drawing.Size(35, 13);
+            this.lbl_nom_prenom.TabIndex = 11;
+            this.lbl_nom_prenom.Text = "Nom :";
+            // 
             // Jeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1058, 587);
+            this.ClientSize = new System.Drawing.Size(1048, 561);
+            this.Controls.Add(this.lbl_nom_prenom);
+            this.Controls.Add(this.lbl_difficulté);
+            this.Controls.Add(this.txt_nom_prenom);
+            this.Controls.Add(this.txt_difficulte);
             this.Controls.Add(this.lbl_temps);
             this.Controls.Add(this.picRep);
             this.Controls.Add(this.txt_Boxtemps);
@@ -220,5 +266,9 @@
         private System.Windows.Forms.TextBox txt_Boxtemps;
         private System.Windows.Forms.PictureBox picRep;
         private System.Windows.Forms.Label lbl_temps;
+        private System.Windows.Forms.TextBox txt_difficulte;
+        private System.Windows.Forms.TextBox txt_nom_prenom;
+        private System.Windows.Forms.Label lbl_difficulté;
+        private System.Windows.Forms.Label lbl_nom_prenom;
     }
 }

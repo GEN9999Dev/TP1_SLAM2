@@ -40,7 +40,7 @@ namespace TP1
                 string Prenom = txt_prenom.Text;
                 string Nom = txt_nom.Text;
                 string Difficulte = combo_difficulte.SelectedItem.ToString();
-                Jeu J = new Jeu();
+                Jeu J = new Jeu(Nom, Prenom, Difficulte);
                 J.Show();
                 this.Hide();
 
@@ -49,7 +49,7 @@ namespace TP1
         }
         private void combo_difficulte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(combo_difficulte.SelectedItem == "Enfer")
+            if(combo_difficulte.SelectedItem.ToString() == "Enfer")
             {
                 this.BackColor = System.Drawing.ColorTranslator.FromHtml("#ab0800");
                 lbl_difficulte.Font = new Font(lbl_difficulte.Font, FontStyle.Bold);

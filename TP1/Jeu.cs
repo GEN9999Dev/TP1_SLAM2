@@ -10,18 +10,26 @@ namespace TP1
 {
     public partial class Jeu : Form
     {
-        int reponseQuestion = 0;
+        public int reponseQuestion = 0;
+        public string nomJoueur = "", prenomJoueur = "", difficulte = "";
+        public int timer_partie;
         Partie partie;
-        private void Init()
+
+        public Jeu(string nomJoueur, string prenomJoueur, string difficulte)
         {
-            InitializeComponent();
-            // Ajouter le code permettant l’initialisation du jeu 
-        }
-        public Jeu()
-        {
+            this.nomJoueur = nomJoueur;
+            this.prenomJoueur = prenomJoueur;
+            this.difficulte = difficulte;
+            timer_partie = 0;
             initForm();
         }
 
+        private void Init()
+        {
+            Jeu jeu = new Jeu(nomJoueur, prenomJoueur, difficulte);
+            InitializeComponent();
+            // Ajouter le code permettant l’initialisation du jeu
+        }
         private void initForm()
         {
             InitializeComponent();
@@ -37,13 +45,17 @@ namespace TP1
             ListeQuestions.Add(new Question("Quelle est la capitale du Portugal ?", 4, 1, "Bruxelles", "Berne", "Luxembourg", "Lisbonne", "Rome"));
             ListeQuestions.Add(new Question("Quelle est la capitale de l'Autriche ?", 5, 1, "Bruxelles", "Berne", "Luxembourg", "Lisbonne", "Vienne"));
 
-            partie = new Partie(ListeQuestions);
+            partie = new Partie(ListeQuestions, nomJoueur, prenomJoueur, difficulte);
+            txt_Boxtemps.Text = "0 sec";
+            partie.gestionTimer(txt_Boxtemps, this, picRep);
             partie.changerQuestion(txt_question1, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep);
         }
+
         private void btn_validerRep_Click(object sender, System.EventArgs e)
         {
             partie.validerReponse(reponseQuestion, picRep);
             partie.numeroQuestion++;
+
             partie.changerQuestion(txt_question1, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep);
             lbl_question_1.Text = "Question " + (partie.numeroQuestion+1);
             reponseQuestion = 0;
@@ -60,5 +72,6 @@ namespace TP1
             ((CheckBox)sender).Checked = true;
             reponseQuestion = Convert.ToInt32(((CheckBox)sender).Name.Substring(8, 1));
         }
+
     }
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using QuizzAndTest.Model;
+using System;
 using System.Windows.Forms;
+using TP1.Model;
 
 namespace TP1
 {
@@ -13,7 +15,7 @@ namespace TP1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MenuPrincipal());
         }
     }
 }

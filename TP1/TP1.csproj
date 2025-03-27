@@ -47,27 +47,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Model\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Model\MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SousFormulaire.cs" />
+    <Compile Include="Model\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Jeu.cs">
+    <Compile Include="Model\Jeu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Jeu.Designer.cs">
+    <Compile Include="Model\Jeu.Designer.cs">
       <DependentUpon>Jeu.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Partie.cs" />
     <Compile Include="Model\Question.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Model\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Jeu.resx">
+    <EmbeddedResource Include="Model\Jeu.resx">
       <DependentUpon>Jeu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

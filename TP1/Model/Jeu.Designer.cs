@@ -45,6 +45,7 @@
             this.txt_nom_prenom = new System.Windows.Forms.TextBox();
             this.lbl_difficulté = new System.Windows.Forms.Label();
             this.lbl_nom_prenom = new System.Windows.Forms.Label();
+            this.progressBarTemps = new System.Windows.Forms.ProgressBar();
             this.groupRep.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRep)).BeginInit();
             this.SuspendLayout();
@@ -193,7 +194,6 @@
             this.txt_difficulte.Name = "txt_difficulte";
             this.txt_difficulte.Size = new System.Drawing.Size(249, 25);
             this.txt_difficulte.TabIndex = 8;
-            this.txt_difficulte.Text = difficulte;
             // 
             // txt_nom_prenom
             // 
@@ -203,7 +203,6 @@
             this.txt_nom_prenom.Name = "txt_nom_prenom";
             this.txt_nom_prenom.Size = new System.Drawing.Size(249, 25);
             this.txt_nom_prenom.TabIndex = 9;
-            this.txt_nom_prenom.Text = prenomJoueur + " " + nomJoueur;
             // 
             // lbl_difficulté
             // 
@@ -223,12 +222,20 @@
             this.lbl_nom_prenom.TabIndex = 11;
             this.lbl_nom_prenom.Text = "Nom :";
             // 
+            // progressBarTemps
+            // 
+            this.progressBarTemps.Location = new System.Drawing.Point(775, 368);
+            this.progressBarTemps.Name = "progressBarTemps";
+            this.progressBarTemps.Size = new System.Drawing.Size(235, 29);
+            this.progressBarTemps.TabIndex = 12;
+            // 
             // Jeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1048, 561);
+            this.Controls.Add(this.progressBarTemps);
             this.Controls.Add(this.lbl_nom_prenom);
             this.Controls.Add(this.lbl_difficulté);
             this.Controls.Add(this.txt_nom_prenom);
@@ -270,5 +277,6 @@
         private System.Windows.Forms.TextBox txt_nom_prenom;
         private System.Windows.Forms.Label lbl_difficulté;
         private System.Windows.Forms.Label lbl_nom_prenom;
+        private System.Windows.Forms.ProgressBar progressBarTemps;
     }
 }

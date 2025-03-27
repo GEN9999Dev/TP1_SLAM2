@@ -1,43 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP1;
 
-namespace TP1
+namespace QuizzAndTest.Model
 {
     public class Partie
     {
         public int score;
         public string difficulte;
-        public int nombreQuestions;
-        public List<Question> listeQuestions;
-        public int numeroBonneReponse;
+        public List<Question> questions;
         public int numeroQuestion;
-        private List<int> reponseAleatoire;
-        public string nomJoueur, prenomJoueur;
+        public int nombreQuestions;
+        public int reponseValidQuestion;
+        public string nomJoueur;
+        public string prenomJoueur;
+        public int dureePartie;
+        public int dureeTQuestion;
+        public Timer timer;
+        private SousFormulaire SF;
 
-        public Partie(List<Question> listeQuestions, string nomJoueur, string prenomJoueur, string difficulte)
+
+        public Partie(List<Question> ListeQuestions)
         {
-            this.score = 0;
-            this.difficulte = difficulte;
-            this.nombreQuestions = listeQuestions.Count();
-            this.listeQuestions = listeQuestions;
-            this.numeroQuestion = 0;
-            this.nomJoueur = nomJoueur;
-            this.prenomJoueur = prenomJoueur;
+            score = 0;
+            difficulte = "";
+            numeroQuestion = 0;
+            questions = ListeQuestions;
+            nombreQuestions = questions.Count;
         }
-        public void calculerScore(bool bonneRep)
+
+        public void validerReponse(int reponse, PictureBox PbImage)
         {
-            if (bonneRep)
+            if (reponse == reponseValidQuestion)
+            {
+                calculerScore(true);
+                changerImg(PbImage, true, false);
+            }
+            else
+            {
+                calculerScore(false);
+                changerImg(PbImage, false, false);
+            }
+        }
+
+        private void calculerScore(bool BonneReponse)
+        {
+            if (BonneReponse)
             {
                 score++;
             }
+
         }
+
         private void changerImg(PictureBox PbImage, bool BonneReponse, bool raz)
         {
-            if (raz == false)
+            if (!raz)
             {
                 if (BonneReponse)
                 {
@@ -45,48 +67,65 @@ namespace TP1
                 }
                 else
                 {
-                    PbImage.Image =TP1.Properties.Resources.faux;
+                    PbImage.Image = TP1.Properties.Resources.faux;
                 }
-            }
-        }
-        public void validerReponse(int reponse, PictureBox PbImage)
-        {
-            if (reponse == numeroBonneReponse)
-            {
-                calculerScore(true);
-                changerImg(PbImage, true, false);
             }
             else
             {
-                changerImg(PbImage, false, false);
-                calculerScore(false);
+                PbImage.Image = TP1.Properties.Resources.Interrogation;
             }
         }
-        public void gestionTimer(TextBox txt_timer, Jeu jeu, PictureBox PbImage)
-        {
-            Timer timer = new Timer();
-            timer.Interval = 1000;
-            timer.Tick += (sender, e) => Timer_Tick(sender, e, txt_timer, jeu, PbImage);
 
-            timer.Start();
-        }
-
-        public void Timer_Tick(object sender, EventArgs e, TextBox txt_timer, Jeu jeu, PictureBox PbImage)
+        public void finDePartie(TextBox txt_affichage, CheckBox ckb_reponse1, CheckBox ckb_reponse2, CheckBox ckb_reponse3, CheckBox ckb_reponse4, CheckBox ckb_reponse5, Form formulaire, GroupBox gd_reponse, PictureBox PbImage, ProgressBar pbTemps, Label lblQuestion)
         {
-            jeu.timer_partie++;
-            txt_timer.Text = jeu.timer_partie.ToString() + " sec";
-            if(jeu.timer_partie >= 15)
+            DialogResult msg;
+            timer.Stop();
+            msg = MessageBox.Show("Votre score est de " + score + ".\r\n vous avez fini la partie en " + dureePartie + " secondes.\r\n Voulez vous rejouer", "Fin de la partie"
+                , MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            if (msg == DialogResult.Yes)
             {
-                validerReponse(0, PbImage);
-                changerQuestion()
+                score = 0;
+                numeroQuestion = 0;
+                dureePartie = 0;
+                changerQuestion(txt_affichage, ckb_reponse1, ckb_reponse2, ckb_reponse3, ckb_reponse4, ckb_reponse5, formulaire, gd_reponse, PbImage, pbTemps, lblQuestion);
+                changerImg(PbImage, true, true);
+                timer.Start();
+            }
+            else
+            {
+                SF.openChildForm(new Form1());
+
+
+            }
+
+
+        }
+
+        public void changerQuestion(TextBox txt_affichage, CheckBox ckb_reponse1, CheckBox ckb_reponse2, CheckBox ckb_reponse3, CheckBox ckb_reponse4, CheckBox ckb_reponse5, Form formulaire, GroupBox gd_reponse, PictureBox PbImage, ProgressBar pbTemps, Label lblQuestion)
+        {
+
+            if (nombreQuestions > numeroQuestion)
+            {
+                aleatoireReponde(txt_affichage, gd_reponse);
+                ckb_reponse1.Checked = false;
+                ckb_reponse2.Checked = false;
+                ckb_reponse3.Checked = false;
+                ckb_reponse4.Checked = false;
+                ckb_reponse5.Checked = false;
+
+            }
+            else
+            {
+                finDePartie(txt_affichage, ckb_reponse1, ckb_reponse2, ckb_reponse3, ckb_reponse4, ckb_reponse5, formulaire, gd_reponse, PbImage, pbTemps, lblQuestion);
+
+
             }
         }
 
-
-        private void aleatoireReponse(TextBox txt_affichage, GroupBox gd_reponse)
+        private void aleatoireReponde(TextBox txt_affichage, GroupBox gd_reponse)
         {
-            int bonneReponse = listeQuestions[numeroQuestion].reponse;
-            txt_affichage.Text = listeQuestions[numeroQuestion].enonce;
+            int bonneReponse = questions[numeroQuestion].reponse;
+            txt_affichage.Text = questions[numeroQuestion].enonce;
             List<int> reponseAleatoire = new List<int>() { 1, 2, 3, 4, 5 };
             Random rnd = new Random();
 
@@ -96,78 +135,75 @@ namespace TP1
                 int random = reponseAleatoire[randIndex];
                 reponseAleatoire.Remove(random);
                 string reponse = "";
-
-                //Réaliser un switch permettant d’affecter à reponse la proposition sélectionnée de manière aléatoire
                 switch (random)
                 {
                     case 1:
-                        reponse = listeQuestions[numeroQuestion].proposition1;break;
+                        reponse = questions[numeroQuestion].proposition1;
+                        break;
                     case 2:
-                        reponse = listeQuestions[numeroQuestion].proposition2; break;
+                        reponse = questions[numeroQuestion].proposition2;
+                        break;
                     case 3:
-                        reponse = listeQuestions[numeroQuestion].proposition3; break;
+                        reponse = questions[numeroQuestion].proposition3;
+                        break;
                     case 4:
-                        reponse = listeQuestions[numeroQuestion].proposition4; break;
+                        reponse = questions[numeroQuestion].proposition4;
+                        break;
                     case 5:
-                        reponse = listeQuestions[numeroQuestion].proposition5; break;
-
+                        reponse = questions[numeroQuestion].proposition5;
+                        break;
                 }
-                getCheckBox(i, gd_reponse).Text = reponse;
+                getTextBox(i, gd_reponse).Text = reponse;
                 if (bonneReponse == random)
                 {
-                    numeroBonneReponse = i;
+                    reponseValidQuestion = i;
                 }
+
+
             }
+
         }
-        private CheckBox getCheckBox(int indice, GroupBox gd_reponse)
+        private CheckBox getTextBox(int indice, GroupBox gd_reponse)
         {
             foreach (Control c in gd_reponse.Controls)
             {
-                if (c.GetType() == typeof(CheckBox) && c.Name == "checkRep" + indice.ToString())
+                if (c.GetType() == typeof(CheckBox) && c.Name == "ckb_reponse" + indice.ToString())
                 {
+
                     return ((CheckBox)c);
+
                 }
             }
             return null;
+
         }
 
+        public void gestionTimer(TextBox txt_timer, ProgressBar pb_dureeRepQuestion, TextBox txt_affichage, CheckBox ckb_reponse1, CheckBox ckb_reponse2, CheckBox ckb_reponse3, CheckBox ckb_reponse4, CheckBox ckb_reponse5, Form formulaire, GroupBox gd_reponse, PictureBox PbImage, ProgressBar pbTemps, Label lblQuestion)
+        {
+            timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += (sender, e) => Timer_Tick(sender, e, txt_timer, pb_dureeRepQuestion, txt_affichage, ckb_reponse1, ckb_reponse2, ckb_reponse3, ckb_reponse4, ckb_reponse5, formulaire, gd_reponse, PbImage, pbTemps, lblQuestion);
 
-        public void changerQuestion(TextBox txt_affichage, CheckBox ckb_reponse1
-            , CheckBox ckb_reponse2, CheckBox ckb_reponse3, CheckBox ckb_reponse4
-            , CheckBox ckb_reponse5, Form formulaire, GroupBox gd_reponse, PictureBox PbImage)
+            timer.Start();
+        }
+
+        public void Timer_Tick(object sender, EventArgs e, TextBox txt_timer, ProgressBar pb_dureeRepQuestion, TextBox txt_affichage, CheckBox ckb_reponse1, CheckBox ckb_reponse2, CheckBox ckb_reponse3, CheckBox ckb_reponse4, CheckBox ckb_reponse5, Form formulaire, GroupBox gd_reponse, PictureBox PbImage, ProgressBar pbTemps, Label numQuestion)
         {
-            if (listeQuestions.Count() >= numeroQuestion+1)
+            dureePartie++;
+            dureeTQuestion++;
+            pb_dureeRepQuestion.Increment(1);
+            txt_timer.Text = dureePartie.ToString() + " sec";
+            if (dureeTQuestion > 15)
             {
-                aleatoireReponse(txt_affichage, gd_reponse);
-                ckb_reponse1.Checked = false;
-                ckb_reponse2.Checked = false;
-                ckb_reponse3.Checked = false;
-                ckb_reponse4.Checked = false;
-                ckb_reponse5.Checked = false;
-            }
-            else
-            {
-                finDePartie(PbImage, formulaire);
+                validerReponse(0, PbImage);
+                numeroQuestion++;
+                numQuestion.Text = (numeroQuestion + 1).ToString();
+                changerQuestion(txt_affichage, ckb_reponse1, ckb_reponse2, ckb_reponse3, ckb_reponse4, ckb_reponse5, formulaire, gd_reponse, PbImage, pbTemps, numQuestion);
+                pb_dureeRepQuestion.Value = 0;
+                dureeTQuestion = 0;
             }
         }
-        public void finDePartie(PictureBox PbImage, Form FormActif)
-        {
-            DialogResult msg = new DialogResult();
-            msg = MessageBox.Show("Votre score est de " + score + ".\r\n Voulez vous rejouer", "Fin de la partie"
-            , MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            if (msg == DialogResult.Yes)
-            {
-                score = 0;
-                numeroQuestion = 0;
-                PbImage.Image = TP1.Properties.Resources.Interrogation;
-            }
-            else
-            {
-                Form1 Accueil = new Form1();
-                Accueil.Show();
-                FormActif.Close();
-            }
-        }
+
 
     }
 }

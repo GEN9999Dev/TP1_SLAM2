@@ -1,32 +1,31 @@
-﻿using System;
+﻿using QuizzAndTest.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
+using TP1.Model;
 
 namespace TP1
 {
     public partial class Jeu : Form
     {
         public int reponseQuestion = 0;
-        public string nomJoueur = "", prenomJoueur = "", difficulte = "";
         public int timer_partie;
         Partie partie;
 
         public Jeu(string nomJoueur, string prenomJoueur, string difficulte)
         {
-            this.nomJoueur = nomJoueur;
-            this.prenomJoueur = prenomJoueur;
-            this.difficulte = difficulte;
+            this.txt_difficulte.Text = difficulte;
+            this.txt_nom_prenom.Text = prenomJoueur + " " + nomJoueur;
             timer_partie = 0;
             initForm();
         }
 
         private void Init()
         {
-            Jeu jeu = new Jeu(nomJoueur, prenomJoueur, difficulte);
             InitializeComponent();
             // Ajouter le code permettant l’initialisation du jeu
         }
@@ -44,11 +43,10 @@ namespace TP1
             ListeQuestions.Add(new Question("Quelle est la capitale du Luxembourg ?", 3, 1, "Bruxelles", "Berne", "Luxembourg", "Madrid", "Rome"));
             ListeQuestions.Add(new Question("Quelle est la capitale du Portugal ?", 4, 1, "Bruxelles", "Berne", "Luxembourg", "Lisbonne", "Rome"));
             ListeQuestions.Add(new Question("Quelle est la capitale de l'Autriche ?", 5, 1, "Bruxelles", "Berne", "Luxembourg", "Lisbonne", "Vienne"));
-
-            partie = new Partie(ListeQuestions, nomJoueur, prenomJoueur, difficulte);
+            partie = new Partie(ListeQuestions);
             txt_Boxtemps.Text = "0 sec";
-            partie.gestionTimer(txt_Boxtemps, this, picRep);
-            partie.changerQuestion(txt_question1, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep);
+            partie.gestionTimer(txt_Boxtemps, progressBarTemps, txt_question1, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep, progressBarTemps, lbl_question_1);
+            partie.changerQuestion(txt_question1, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep, progressBarTemps, lbl_question_1);
         }
 
         private void btn_validerRep_Click(object sender, System.EventArgs e)
@@ -56,7 +54,7 @@ namespace TP1
             partie.validerReponse(reponseQuestion, picRep);
             partie.numeroQuestion++;
 
-            partie.changerQuestion(txt_question1, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep);
+            partie.changerQuestion(txt_question1, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep, progressBarTemps, lbl_question_1);
             lbl_question_1.Text = "Question " + (partie.numeroQuestion+1);
             reponseQuestion = 0;
 

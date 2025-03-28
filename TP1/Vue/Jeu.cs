@@ -27,7 +27,6 @@ namespace TP1
         private void Init()
         {
             InitializeComponent();
-            // Ajouter le code permettant l’initialisation du jeu
         }
         private void initForm()
         {
@@ -70,5 +69,9 @@ namespace TP1
             reponseQuestion = Convert.ToInt32(((CheckBox)sender).Name.Substring(8, 1));
         }
 
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

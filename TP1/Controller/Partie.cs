@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP1;
+using TP1.Model;
 
 namespace QuizzAndTest.Model
 {
@@ -54,7 +55,6 @@ namespace QuizzAndTest.Model
             {
                 score++;
             }
-
         }
 
         private void changerImg(PictureBox PbImage, bool BonneReponse, bool raz)
@@ -93,9 +93,7 @@ namespace QuizzAndTest.Model
             }
             else
             {
-                SF.openChildForm(new Form1());
-
-
+                formulaire.Hide();
             }
 
 
@@ -113,7 +111,6 @@ namespace QuizzAndTest.Model
                 ckb_reponse3.Checked = false;
                 ckb_reponse4.Checked = false;
                 ckb_reponse5.Checked = false;
-
             }
             else
             {

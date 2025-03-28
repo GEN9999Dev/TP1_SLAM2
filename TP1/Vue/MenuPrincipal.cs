@@ -1,4 +1,5 @@
 ﻿using QuizzAndTest.Model;
+using TP1.Vue;
 using System;
 using System.Windows.Forms;
 
@@ -30,6 +31,12 @@ namespace TP1.Model
         {
             SousFormulaire SF = new SousFormulaire(pnlSf);
             SF.openChildForm(new Form1());
+        }
+
+        private void tsGestionQuestionAffichage_Click(object sender, EventArgs e)
+        {
+            SousFormulaire SF = new SousFormulaire(pnlSf);
+            SF.openChildForm(new afficherDonnees());
         }
 
         /*private void affichageToolStripMenuItem_Click(object sender, EventArgs e)

@@ -37,6 +37,7 @@ namespace TP1
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.comboDifficulte = new System.Windows.Forms.ComboBox();
             this.lblDifficulte = new System.Windows.Forms.Label();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnValider
@@ -99,11 +100,22 @@ namespace TP1
             this.lblDifficulte.TabIndex = 9;
             this.lblDifficulte.Text = "Difficulté :";
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Location = new System.Drawing.Point(1345, 0);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(29, 23);
+            this.btnQuitter.TabIndex = 10;
+            this.btnQuitter.Text = "X";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1489, 696);
+            this.ClientSize = new System.Drawing.Size(1386, 696);
+            this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.lblDifficulte);
             this.Controls.Add(this.comboDifficulte);
             this.Controls.Add(this.lblPrenom);
@@ -127,6 +139,7 @@ namespace TP1
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.ComboBox comboDifficulte;
         private System.Windows.Forms.Label lblDifficulte;
+        private Button btnQuitter;
     }
 }
 

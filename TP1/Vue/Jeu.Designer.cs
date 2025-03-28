@@ -40,13 +40,14 @@
             this.btnValiderRep = new System.Windows.Forms.Button();
             this.txtTempsTotal = new System.Windows.Forms.TextBox();
             this.lblTempsTotal = new System.Windows.Forms.Label();
-            this.picRep = new System.Windows.Forms.PictureBox();
             this.txtDIfficulte = new System.Windows.Forms.TextBox();
             this.txtNomPrenom = new System.Windows.Forms.TextBox();
             this.lbldifficulte = new System.Windows.Forms.Label();
             this.lblNomPrenom = new System.Windows.Forms.Label();
             this.pbTemps = new System.Windows.Forms.ProgressBar();
             this.lblPbTemps = new System.Windows.Forms.Label();
+            this.btnQuitter = new System.Windows.Forms.Button();
+            this.picRep = new System.Windows.Forms.PictureBox();
             this.groupRep.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRep)).BeginInit();
             this.SuspendLayout();
@@ -177,16 +178,6 @@
             this.lblTempsTotal.TabIndex = 7;
             this.lblTempsTotal.Text = "Temps total";
             // 
-            // picRep
-            // 
-            this.picRep.Image = global::TP1.Properties.Resources.Interrogation;
-            this.picRep.Location = new System.Drawing.Point(1085, 151);
-            this.picRep.Name = "picRep";
-            this.picRep.Size = new System.Drawing.Size(240, 199);
-            this.picRep.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRep.TabIndex = 6;
-            this.picRep.TabStop = false;
-            // 
             // txtDIfficulte
             // 
             this.txtDIfficulte.Enabled = false;
@@ -240,12 +231,34 @@
             this.lblPbTemps.TabIndex = 13;
             this.lblPbTemps.Text = "Temps restant pour répondre :";
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnQuitter.Location = new System.Drawing.Point(1342, -1);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(32, 23);
+            this.btnQuitter.TabIndex = 14;
+            this.btnQuitter.Text = "X";
+            this.btnQuitter.UseVisualStyleBackColor = false;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
+            // picRep
+            // 
+            this.picRep.Image = global::TP1.Properties.Resources.Interrogation;
+            this.picRep.Location = new System.Drawing.Point(1085, 151);
+            this.picRep.Name = "picRep";
+            this.picRep.Size = new System.Drawing.Size(240, 199);
+            this.picRep.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRep.TabIndex = 6;
+            this.picRep.TabStop = false;
+            // 
             // Jeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1473, 657);
+            this.ClientSize = new System.Drawing.Size(1386, 657);
+            this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.lblPbTemps);
             this.Controls.Add(this.pbTemps);
             this.Controls.Add(this.lblNomPrenom);
@@ -292,5 +305,6 @@
         private System.Windows.Forms.Label lblNomPrenom;
         private System.Windows.Forms.ProgressBar pbTemps;
         private System.Windows.Forms.Label lblPbTemps;
+        private System.Windows.Forms.Button btnQuitter;
     }
 }

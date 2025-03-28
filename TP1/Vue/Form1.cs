@@ -63,5 +63,10 @@ namespace TP1
                 lblPrenom.Font = new Font(lblPrenom.Font, FontStyle.Regular);
             }
         }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

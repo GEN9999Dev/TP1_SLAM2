@@ -12,9 +12,9 @@ using TP1.Model;
 
 namespace TP1
 {
-    public partial class Form1 : Form
+    public partial class Accueil : Form
     {
-        public Form1()
+        public Accueil()
         {
             InitializeComponent();
             comboDifficulte.Items.Add("Facile");

@@ -30,7 +30,7 @@ namespace TP1.Model
         private void démarrerToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             SousFormulaire SF = new SousFormulaire(pnlSf);
-            SF.openChildForm(new Form1());
+            SF.openChildForm(new Accueil());
         }
 
         private void tsGestionQuestionAffichage_Click(object sender, EventArgs e)

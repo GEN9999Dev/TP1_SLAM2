@@ -1,13 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySqlConnector;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP1.Model;
-using MySqlConnector;
+
 
 namespace TP1.Controller
 {
@@ -16,11 +12,11 @@ namespace TP1.Controller
         public DataTable GetListeQuestion()
         {
             DataTable dt = new DataTable();
-            ConnexionBDD conn = new ConnexionBDD();
 
             try
             {
-                using (MySqlCommand cmd = new MySqlCommand("//Votre requête SQL ici de préférence jointure + alias ", conn.mySqlCo))
+                ConnexionBDD conn = new ConnexionBDD();
+                using (MySqlCommand cmd = new MySqlCommand("SELECT IDQUESTION, ENONCEQUESTION as 'Enoncé', REPONSE1QUESTION as 'Réponse 1', REPONSE2QUESTION as 'Réponse 2', REPONSE3QUESTION as 'Réponse 3', REPONSE4QUESTION as 'Réponse 4',REPONSE5QUESTION as  'Réponse 5', LABELDIFFICULTE as 'Difficulté' FROM QUESTION INNER JOIN DIFFICULTE ON QUESTION.IDDIFFICULTE = DIFFICULTE.IDDIFFICULTE;", conn.mySqlCo))
                 {
                     conn.MySqlCo.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
@@ -31,8 +27,6 @@ namespace TP1.Controller
             {
                 MessageBox.Show(e.ToString(), "Erreur 3", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign, true);
             }
-            conn.MySqlCo.Close();
-            conn.MySqlCo = null;
             return dt;
         }
 

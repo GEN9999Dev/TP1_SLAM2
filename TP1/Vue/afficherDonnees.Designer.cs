@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvQuestions = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuestions)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvQuestions
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(54, 49);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1005, 508);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvQuestions.AllowUserToAddRows = false;
+            this.dgvQuestions.AllowUserToDeleteRows = false;
+            this.dgvQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvQuestions.Location = new System.Drawing.Point(54, 49);
+            this.dgvQuestions.Name = "dgvQuestions";
+            this.dgvQuestions.ReadOnly = true;
+            this.dgvQuestions.Size = new System.Drawing.Size(1005, 508);
+            this.dgvQuestions.TabIndex = 0;
             // 
             // afficherDonnees
             // 
@@ -49,17 +49,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 657);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvQuestions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "afficherDonnees";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuestions)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvQuestions;
     }
 }

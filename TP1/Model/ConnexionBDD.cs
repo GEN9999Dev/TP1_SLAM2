@@ -9,18 +9,18 @@ namespace TP1.Model
 {
     internal class ConnexionBDD
     {
-        private string DBServer = "192.168.115.7", DBName = "BDD_QuizzAndTest", DBLogin = "quizzAndTest", DBPassword = "kW8vkqowcHjXNc";
-        private MySqlConnection mySqlCo;
+        private string DBServer = "192.168.115.7", DBName = "bdd_QuizzAndTest", DBLogin = "quizzAndTest", DBPassword = "kW8vkqowcHjXNc";
+        public MySqlConnection mySqlCo;
         public ConnexionBDD()
         {
             initConnexion();
         }
 
-        public object MySqlCo { get; internal set; }
+        public MySqlConnection MySqlCo { get; internal set; }
 
         private void initConnexion()
         {
-            mySqlCo = new MySqlConnection("Server=" + DBServer + ";Database=" + DBName + ";User ID=" + DBLogin + ";Password=" + DBPassword);
+            MySqlCo = new MySqlConnection("Server=" + DBServer + ";Database=" + DBName + ";User ID=" + DBLogin + ";Password=" + DBPassword);
         }
 
     }

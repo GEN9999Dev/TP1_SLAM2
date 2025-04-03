@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Difficulte.cs" />
     <Compile Include="Controller\QuestionBDD.cs" />
     <Compile Include="Model\ConnexionBDD.cs" />
     <Compile Include="Vue\afficherDonnees.cs">

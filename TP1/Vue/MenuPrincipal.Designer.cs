@@ -52,14 +52,14 @@
             this.pnlSf.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlSf.Location = new System.Drawing.Point(0, 27);
             this.pnlSf.Name = "pnlSf";
-            this.pnlSf.Size = new System.Drawing.Size(1489, 696);
+            this.pnlSf.Size = new System.Drawing.Size(1370, 692);
             this.pnlSf.TabIndex = 4;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1370, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1354, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -72,7 +72,7 @@
             this.tsInterrogation});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1370, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(1354, 24);
             this.menuStrip2.TabIndex = 5;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -87,7 +87,7 @@
             // tsJeuDemarrer
             // 
             this.tsJeuDemarrer.Name = "tsJeuDemarrer";
-            this.tsJeuDemarrer.Size = new System.Drawing.Size(123, 22);
+            this.tsJeuDemarrer.Size = new System.Drawing.Size(180, 22);
             this.tsJeuDemarrer.Text = "Démarrer";
             this.tsJeuDemarrer.Click += new System.EventHandler(this.démarrerToolStripMenuItem_Click_1);
             // 
@@ -108,7 +108,7 @@
             // tsGestionQuestionAffichage
             // 
             this.tsGestionQuestionAffichage.Name = "tsGestionQuestionAffichage";
-            this.tsGestionQuestionAffichage.Size = new System.Drawing.Size(180, 22);
+            this.tsGestionQuestionAffichage.Size = new System.Drawing.Size(125, 22);
             this.tsGestionQuestionAffichage.Text = "Affichage";
             this.tsGestionQuestionAffichage.Click += new System.EventHandler(this.tsGestionQuestionAffichage_Click);
             // 
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 716);
+            this.ClientSize = new System.Drawing.Size(1354, 716);
             this.Controls.Add(this.pnlSf);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);

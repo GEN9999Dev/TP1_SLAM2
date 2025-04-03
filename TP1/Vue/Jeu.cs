@@ -6,9 +6,10 @@ using System.IO.Ports;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
+using TP1.Controller;
 using TP1.Model;
 
-namespace TP1
+namespace TP1.Vue
 {
     public partial class Jeu : Form
     {
@@ -31,18 +32,8 @@ namespace TP1
         private void initForm()
         {
             InitializeComponent();
-            List<Question> ListeQuestions = new List<Question>();
-            ListeQuestions.Add(new Question("Quelle est la capitale de la France ?", 1, 1, "Paris", "Londres", "Berlin", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale de l'Espagne ?", 4, 1, "Paris", "Londres", "Berlin", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale de l'Allemagne ?", 3, 1, "Paris", "Londres", "Berlin", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale de l'Italie ?", 5, 1, "Paris", "Londres", "Berlin", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale de l'Angleterre ?", 2, 1, "Paris", "Londres", "Berlin", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale de la Belgique ?", 1, 1, "Bruxelles", "Londres", "Berlin", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale de la Suisse ?", 2, 1, "Bruxelles", "Berne", "Berlin", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale du Luxembourg ?", 3, 1, "Bruxelles", "Berne", "Luxembourg", "Madrid", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale du Portugal ?", 4, 1, "Bruxelles", "Berne", "Luxembourg", "Lisbonne", "Rome"));
-            ListeQuestions.Add(new Question("Quelle est la capitale de l'Autriche ?", 5, 1, "Bruxelles", "Berne", "Luxembourg", "Lisbonne", "Vienne"));
-            partie = new Partie(ListeQuestions);
+            QuestionBDD ListeQuestions = new QuestionBDD();
+            partie = new Partie(ListeQuestions.getListeQuestion(new ConnexionBDD()));
             txtTempsTotal.Text = "0 sec";
             partie.gestionTimer(txtTempsTotal, pbTemps, txtQuestion, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep, pbTemps, lblQuestion);
             partie.changerQuestion(txtQuestion, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep, pbTemps, lblQuestion);

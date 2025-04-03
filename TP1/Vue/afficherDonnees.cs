@@ -18,7 +18,7 @@ namespace TP1.Vue
         {
             InitializeComponent();
             QuestionBDD dtListeQuestions = new QuestionBDD();
-            dv = new DataView(dtListeQuestions.GetListeQuestionRecherche(0, ""));
+            dv = new DataView(dtListeQuestions.GetListeQuestionRecherche(0, "", false));
             Difficulte dtListeDiff = new Difficulte();
             dgvQuestions.DataSource = dv;
             //Cacher les colonnes qui ne servent à rien pour l’utilisateur
@@ -45,14 +45,14 @@ namespace TP1.Vue
         private void txtRecherchemot_TextChanged(object sender, EventArgs e)
         {
             QuestionBDD dt_listeQuestion = new QuestionBDD();
-            DataView dv = new DataView(dt_listeQuestion.GetListeQuestionRecherche(comboRechercheDiff.SelectedIndex, txtRecherchemot.Text));
+            DataView dv = new DataView(dt_listeQuestion.GetListeQuestionRecherche(comboRechercheDiff.SelectedIndex, txtRecherchemot.Text, false));
             dgvQuestions.DataSource = dv;
         }
 
         private void comboRechercheDiff_SelectedIndexChanged(object sender, EventArgs e)
         {
             QuestionBDD dt_listeQuestion = new QuestionBDD();
-            DataView dv = new DataView(dt_listeQuestion.GetListeQuestionRecherche(comboRechercheDiff.SelectedIndex, txtRecherchemot.Text));
+            DataView dv = new DataView(dt_listeQuestion.GetListeQuestionRecherche(comboRechercheDiff.SelectedIndex, txtRecherchemot.Text, false));
             dgvQuestions.DataSource = dv;
         }
     }

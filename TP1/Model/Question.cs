@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP1
+namespace TP1.Model
 {
     public class Question
     {

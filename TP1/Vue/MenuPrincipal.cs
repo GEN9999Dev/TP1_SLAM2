@@ -38,11 +38,5 @@ namespace TP1.Model
             SousFormulaire SF = new SousFormulaire(pnlSf);
             SF.openChildForm(new afficherDonnees());
         }
-
-        /*private void affichageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SousFormulaire SF = new SousFormulaire(pnlSf);
-            SF.openChildForm(new affDonnee());
-        }*/
     }
 }

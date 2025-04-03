@@ -1,4 +1,4 @@
-﻿namespace TP1
+﻿namespace TP1.Vue
 {
     partial class Jeu
     {
@@ -234,9 +234,9 @@
             // btnQuitter
             // 
             this.btnQuitter.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnQuitter.Location = new System.Drawing.Point(1342, -1);
+            this.btnQuitter.Location = new System.Drawing.Point(1338, 2);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(32, 23);
+            this.btnQuitter.Size = new System.Drawing.Size(29, 23);
             this.btnQuitter.TabIndex = 14;
             this.btnQuitter.Text = "X";
             this.btnQuitter.UseVisualStyleBackColor = false;
@@ -257,7 +257,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1386, 657);
+            this.ClientSize = new System.Drawing.Size(1370, 692);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.lblPbTemps);
             this.Controls.Add(this.pbTemps);

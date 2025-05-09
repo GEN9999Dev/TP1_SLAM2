@@ -38,6 +38,24 @@ namespace TP1.Controller {
             nombreQuestions = questions.Count;
         }
         #endregion
+        public void formaterDGV(Form formulaire)
+        {
+            foreach (Control ctrl in formulaire.Controls)
+            {
+                if (ctrl is DataGridView dgv)
+                {
+                    dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgv.AllowUserToAddRows = false;
+                    dgv.AllowUserToDeleteRows = false;
+                    dgv.AllowUserToOrderColumns = true;
+                    dgv.AllowUserToResizeColumns = false;
+                    dgv.AllowUserToResizeRows = false;
+                    dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    dgv.ReadOnly = true;
+                    dgv.RowHeadersVisible = false;
+                }
+            }
+        }
         public void validerReponse(int reponse, PictureBox PbImage)
         {
             if (reponse == reponseValidQuestion)

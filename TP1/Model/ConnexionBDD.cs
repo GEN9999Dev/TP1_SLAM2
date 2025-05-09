@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySqlConnector;
 
 namespace TP1.Model
@@ -21,7 +22,8 @@ namespace TP1.Model
 
         private void initConnexion()
         {
-            MySqlCo = new MySqlConnection("Server=" + DBServer + ";Database=" + DBName + ";User ID=" + DBLogin + ";Password=" + DBPassword);
+            string connectionBDD = "Server=" + DBServer + ";Database=" + DBName + ";User ID=" + DBLogin + ";Password=" + DBPassword;
+            MySqlCo = new MySqlConnection(connectionBDD);
         }
 
     }

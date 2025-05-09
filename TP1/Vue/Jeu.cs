@@ -13,9 +13,11 @@ namespace TP1.Vue
 {
     public partial class Jeu : Form
     {
+        #region attributs
         public int reponseQuestion = 0;
         public int timer_partie;
         Partie partie;
+        #endregion
 
         public Jeu(string nomJoueur, string prenomJoueur, string difficulte)
         {
@@ -33,7 +35,7 @@ namespace TP1.Vue
         {
             InitializeComponent();
             QuestionBDD ListeQuestions = new QuestionBDD();
-            partie = new Partie(ListeQuestions.getListeQuestion(new ConnexionBDD()));
+            partie = new Partie(ListeQuestions.getListeQuestion());
             txtTempsTotal.Text = "0 sec";
             partie.gestionTimer(txtTempsTotal, pbTemps, txtQuestion, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep, pbTemps, lblQuestion);
             partie.changerQuestion(txtQuestion, checkRep1, checkRep2, checkRep3, checkRep4, checkRep5, this, groupRep, picRep, pbTemps, lblQuestion);

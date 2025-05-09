@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Drawing.Text;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using TP1.Model;
 
@@ -11,7 +12,10 @@ namespace TP1.Controller
 {
     internal class Difficulte
     {
-        public DataTable getListeDifficulte()
+        public Difficulte()
+        {
+        }
+        public DataTable getListeDifficulte(bool colonneVide)
         {
             DataTable dt = new DataTable();
             DataRow workRow;
@@ -24,10 +28,13 @@ namespace TP1.Controller
                     conn.MySqlCo.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
                     dt.Load(reader);
-                    workRow = dt.NewRow();
-                    workRow[0] = -1;
-                    workRow[1] = "";
-                    dt.Rows.InsertAt(workRow, 0);
+                    if (colonneVide)
+                    {
+                        workRow = dt.NewRow();
+                        workRow[0] = -1;
+                        workRow[1] = "";
+                        dt.Rows.InsertAt(workRow, 0);
+                    }
                 }
             }
             catch (Exception e)
